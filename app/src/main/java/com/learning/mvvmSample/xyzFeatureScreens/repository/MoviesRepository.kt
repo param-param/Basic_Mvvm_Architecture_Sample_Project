@@ -21,14 +21,11 @@ class MoviesRepository(private val moviesService: MoviesService) {
             val responseBody = response.body()
             if (responseBody != null) {
                 _moviesLiveData.postValue(ResponseType.Success(responseBody.results))
-                ResponseType.Success(responseBody)
             } else {
                 _moviesLiveData.postValue(ResponseType.Error("Something went wrong"))
-                ResponseType.Error("Something went wrong")
             }
         } else {
             _moviesLiveData.postValue(ResponseType.Error("Something went wrong"))
-            ResponseType.Error("Something went wrong")
         }
     }
 
